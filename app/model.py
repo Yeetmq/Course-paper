@@ -15,12 +15,9 @@ class ModelHandler:
         return joblib.load(path)
 
     def predict_Occupier(self, data: pd.DataFrame) -> np.ndarray:
-        preprocessed_data = self.preprocess_data_Occupier(data)
-        return self.model.predict(preprocessed_data)
+        return self.model.predict(data)
     
     def predict_Investment(self, data: pd.DataFrame) -> np.ndarray:
-        print(data.columns)
-        print(data.head())
         return self.model.predict(data)
 
     def preprocess_data_Occupier(self, input_data: pd.DataFrame) -> pd.DataFrame:
@@ -72,9 +69,9 @@ class ModelHandler:
 
         data = data.drop('timestamp', axis=1)
 
-        Owner_Occupier = data[data['product_type'] == 1].copy()
+        Occupier = data[data['product_type'] == 0].copy()
 
-        return Owner_Occupier
+        return Occupier
     
     def preprocess_data_Investment(self, input_data: pd.DataFrame) -> pd.DataFrame:
         
@@ -125,10 +122,7 @@ class ModelHandler:
 
         data = data.drop('timestamp', axis=1)
 
-        print(data.head())
-
         Investment = data[data['product_type'] == 0].copy()
-
 
         return Investment
     

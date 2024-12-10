@@ -43,7 +43,7 @@ def predict():
         prediction_Occupier = model_Occupier.predict_Occupier(Owner_Occupier)
 
         return jsonify({
-            "Owner_Occupier_predictions": prediction_Occupier.tolist()
+            "Owner_Occupier_predictions": np.exp(prediction_Occupier).tolist()
         })
 
 if __name__ == '__main__':
