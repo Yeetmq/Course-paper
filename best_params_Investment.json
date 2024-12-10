@@ -1,0 +1,1 @@
+{"xgboost__learning_rate": 0.05, "xgboost__max_depth": 3, "xgboost__n_estimators": 200}
